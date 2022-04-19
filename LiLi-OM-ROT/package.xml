@@ -11,6 +11,7 @@
   <author email="kailai.li@kit.edu">Kailai Li</author>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <depend>pcl_conversions</depend>
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
   <depend>nav_msgs</depend>

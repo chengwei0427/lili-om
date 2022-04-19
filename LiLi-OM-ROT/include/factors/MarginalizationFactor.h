@@ -10,7 +10,8 @@
 
 const int NUM_THREADS = 4;
 
-struct ResidualBlockInfo {
+struct ResidualBlockInfo
+{
     ResidualBlockInfo(ceres::CostFunction *_cost_function,
                       ceres::LossFunction *_loss_function,
                       std::vector<double *> _parameter_blocks,
@@ -32,7 +33,8 @@ struct ResidualBlockInfo {
     Eigen::VectorXd residuals;
 };
 
-class MarginalizationInfo {
+class MarginalizationInfo
+{
 public:
     ~MarginalizationInfo();
     int LocalSize(int size) const;
@@ -43,13 +45,13 @@ public:
 
     std::vector<ResidualBlockInfo *> factors;
     int m, n;
-    std::unordered_map<long, int> parameter_block_size; //global size
+    std::unordered_map<long, int> parameter_block_size; // global size
     int sum_block_size;
-    std::unordered_map<long, int> parameter_block_idx; //local size
+    std::unordered_map<long, int> parameter_block_idx; // local size
     std::unordered_map<long, double *> parameter_block_data;
 
-    std::vector<int> keep_block_size; //global size
-    std::vector<int> keep_block_idx;  //local size
+    std::vector<int> keep_block_size; // global size
+    std::vector<int> keep_block_idx;  // local size
     std::vector<double *> keep_block_data;
 
     Eigen::MatrixXd linearized_jacobians;
@@ -57,20 +59,22 @@ public:
     const double eps = 1e-8;
 };
 
-class MarginalizationFactor : public ceres::CostFunction {
+class MarginalizationFactor : public ceres::CostFunction
+{
 public:
-    MarginalizationFactor(MarginalizationInfo* _marginalization_info);
+    MarginalizationFactor(MarginalizationInfo *_marginalization_info);
     virtual bool Evaluate(double const *const *parameters, double *residuals, double **jacobians) const;
 
-    MarginalizationInfo* marginalization_info;
+    MarginalizationInfo *marginalization_info;
 };
 
-struct ThreadsStruct {
+struct ThreadsStruct
+{
     std::vector<ResidualBlockInfo *> sub_factors;
     Eigen::MatrixXd A;
     Eigen::VectorXd b;
-    std::unordered_map<long, int> parameter_block_size; //global size
-    std::unordered_map<long, int> parameter_block_idx; //local size
+    std::unordered_map<long, int> parameter_block_size; // global size
+    std::unordered_map<long, int> parameter_block_idx;  // local size
 };
 
-#endif //MARGINALIZATIONFACTOR_H_
+#endif // MARGINALIZATIONFACTOR_H_
