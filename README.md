@@ -1,3 +1,25 @@
+# lili-om-modified
+
+This repository is a modified LiLi-OM. The system is developed based on the open-source odometry and mapping system [**LiLi-OM**](https://github.com/KIT-ISAS/lili-om). And the feature extract moudle is implemented based on [**LIO-SAM**](https://github.com/TixiaoShan/LIO-SAM) .
+
+## Modification
+
+  - feature extract moudle is implemented based on lio-sam; So this moudle support velodyne,ouster and livox.And easy to extend to other lidar.
+  - 
+
+## demo
+**Test with ouster-32(os1),holding OS laser, riding a scooter to collect this test data**
+<div align="center">
+<img src="./doc/test1-lili-om.png" width="1000px">
+</div>
+
+**Test with ouster-32(os1),Hand-held Ouster Lidar and data collected on foot**
+<div align="center">
+<img src="./doc/test2-lili-om.png" width="1000px">
+</div>
+
+--------------=----------------------------  divide line  ----------------------------------------------
+
 # LiLi-OM (LIvox LiDAR-Inertial Odometry and Mapping)
 ## -- Towards High-Performance Solid-State-LiDAR-Inertial Odometry and Mapping
 This is the code repository of LiLi-OM, a real-time tightly-coupled LiDAR-inertial odometry and mapping system for solid-state LiDAR (Livox Horizon) and conventional LiDARs (e.g., Velodyne). It has two variants as shown in the folder: 
